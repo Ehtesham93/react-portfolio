@@ -1,0 +1,183 @@
+/* =========================================================
+   Starry Background with Gradient Sky + Twinkling Stars
+   ========================================================= */
+
+/* Background container */
+.background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  animation: skyShift 30s ease-in-out infinite alternate;
+}
+
+/* Subtle sky gradient animation */
+@keyframes skyShift {
+  0% { background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); }
+  50% { background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%); }
+  100% { background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); }
+}
+
+/* Shared star styles */
+#stars, #stars2, #stars3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  animation: animStar linear infinite, twinkle ease-in-out infinite;
+}
+
+/* Layer 1: small stars */
+#stars {
+  width: 1px;
+  height: 1px;
+  box-shadow: 1487px 822px #fff, 702px 619px #fff, 579px 76px #fff, 881px 14px #fff;
+  animation-duration: 50s, 2s;
+}
+#stars:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 1px;
+  height: 1px;
+  box-shadow: inherit;
+}
+
+/* Layer 2: medium stars */
+#stars2 {
+  width: 2px;
+  height: 2px;
+  box-shadow: 592px 134px #fff, 346px 741px #fff, 1000px 1781px #fff, 996px 728px #fff;
+  animation-duration: 100s, 3s;
+  opacity: 0.7;
+}
+#stars2:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  box-shadow: inherit;
+}
+
+/* Layer 3: large stars */
+#stars3 {
+  width: 3px;
+  height: 3px;
+  box-shadow: 222px 946px #fff, 408px 926px #fff, 1608px 1741px #fff, 1977px 1436px #fff;
+  animation-duration: 150s, 4s;
+  opacity: 0.5;
+}
+#stars3:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 3px;
+  height: 3px;
+  box-shadow: inherit;
+}
+
+/* Star movement */
+@keyframes animStar {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-2000px); }
+}
+
+/* Twinkling effect */
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Shooting star */
+.shooting-star {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(180deg, #fff, transparent);
+  opacity: 0.8;
+  transform: rotate(45deg);
+  animation: shoot 5s linear infinite;
+}
+@keyframes shoot {
+  0% { transform: translateX(0) translateY(0) rotate(45deg); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translateX(-600px) translateY(600px) rotate(45deg); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* =========================================================
+   Intro Text Styling
+   ========================================================= */
+
+/* Rainbow animated headline */
+.rainbow-text {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(
+    270deg,
+    #ff6ec4,
+    #7873f5,
+    #4ade80,
+    #22d3ee,
+    #facc15,
+    #f87171
+  );
+  background-size: 1200% 1200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowShift 12s ease infinite;
+}
+
+@keyframes rainbowShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Highlighted name glow */
+.rainbow-text .highlight {
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8),
+               0 0 24px rgba(0, 230, 255, 0.6);
+}
+
+/* Glow text for subtitle */
+.glow-text {
+  color: #e8fff7;
+  text-shadow: 0 0 8px rgba(0, 230, 255, 0.8),
+               0 0 18px rgba(0, 230, 255, 0.6);
+}
+
+/* Custom button */
+.btn-custom {
+  background: linear-gradient(135deg, #24b67e, #00e6ff);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0,230,255,0.4);
+}
+.btn-custom:hover {
+  background: linear-gradient(135deg, #00e6ff, #24b67e);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 20px rgba(0,230,255,0.6);
+}
+
+/* Make decorative layers non-interactive */
+#stars, #stars2, #stars3,
+.contact-section .overlay-mf,
+.intro .overlay-itro {
+  pointer-events: none;
+}
+
+/* Ensure the actual content is clickable and above */
+.intro-content,
+.contact-mf,
+.container {
+  position: relative;
+  z-index: 2;
+}
