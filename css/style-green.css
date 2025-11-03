@@ -1,0 +1,349 @@
+/* =========================================================
+   Global Enhancements for Performance & Visual Consistency
+   ========================================================= */
+
+/* Prevent white flash and enforce dark background */
+html,
+body {
+  background-color: #0f1113; /* deep neutral background */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  color: #e6f1ff; /* bright, visible text */
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Ensure major sections always have a solid background */
+.intro,
+.paralax-mf,
+.footer-paralax,
+.portfolio-mf,
+.about-mf,
+.testimonials,
+.contact-mf {
+  background-color: #0f1113;
+}
+
+/* Background images: avoid fixed attachment for performance */
+.bg-image {
+  background-attachment: scroll;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+@media (min-width: 992px) {
+  .bg-image {
+    background-attachment: scroll;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Section titles with animated gradient */
+.section-title {
+  font-size: 36px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #ff6ec4, #7873f5, #24b67e, #00e6ff, #facc15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s linear infinite;
+  background-size: 300% auto;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================================================
+   About Section Container
+   ========================================================= */
+.about-card, 
+.box-shadow-full {
+  background: rgba(255, 255, 255, 0.05); /* subtle transparent white */
+  backdrop-filter: blur(12px);            /* glass effect */
+  border-radius: 20px;                    /* rounded corners */
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4); /* depth shadow */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about-card:hover, 
+.box-shadow-full:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(0, 230, 255, 0.4);
+}
+
+/* =========================================================
+   Contact Section (Sky Gradient + Overlay + Glassmorphism)
+   ========================================================= */
+.contact-section {
+  position: relative;
+  padding: 80px 20px;
+  color: #e6f1ff;
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #00c6ff);
+  background-size: cover;
+  background-position: center;
+}
+.contact-section .overlay-mf {
+  background: rgba(0, 0, 0, 0.55);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+.contact-mf {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.contact-mf .title-box-2 h5 {
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #24b67e, #00e6ff, #facc15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.contact-mf .form-control {
+  background-color: rgba(31, 42, 47, 0.8);
+  border: 1px solid #24b67e;
+  color: #e6f1ff;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-mf .form-control::placeholder {
+  color: #a0b3c2;
+}
+.contact-mf .form-control:focus {
+  border-color: #00e6ff;
+  box-shadow: 0 0 12px rgba(0,230,255,0.6);
+  outline: none;
+}
+
+/* Submit button */
+.btn-custom {
+  background: linear-gradient(135deg, #24b67e, #00e6ff, #facc15);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-custom:hover {
+  background: linear-gradient(135deg, #facc15, #00e6ff, #24b67e);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 230, 255, 0.5);
+}
+
+/* =========================================================
+   Other Sections
+   ========================================================= */
+.about-mf p,
+.portfolio-mf p,
+.testimonials p,
+.contact-mf p {
+  color: #d0d8e0;
+}
+.work-box {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(21, 24, 27, 0.9);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+.work-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 32px rgba(0, 230, 255, 0.35);
+}
+.work-box img {
+  display: block;
+  width: 100%;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: transform 0.3s ease;
+}
+.work-box:hover img {
+  transform: scale(1.08) translateZ(0);
+}
+
+/* Overlay in hero to avoid flicker */
+.intro .overlay-itro {
+  background-color: rgba(0, 0, 0, 0.55);
+  will-change: opacity;
+}
+
+/* Hero text */
+.intro .intro-title,
+.intro .intro-subtitle {
+  color: #ffffff;
+  text-shadow: 0 0 16px rgba(0,230,255,0.8);
+}
+
+/* Glow and gradient text effects */
+.glow-text {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0,230,255,0.8),
+               0 0 18px rgba(0,230,255,0.6);
+}
+.gradient-text {
+  background: linear-gradient(90deg, #ff6ec4, #7873f5, #24b67e, #00e6ff, #facc15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 3s linear infinite;
+  background-size: 300% auto;
+}
+
+/* Lightbox overlay consistency */
+.lightboxOverlay {
+  background-color: #0b0d10;
+  opacity: 0.88;
+  will-change: opacity;
+}
+.lb-outerContainer {
+  background-color: #0f1113;
+  border-radius: 12px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Owl Carousel dots/nav tweaks */
+.owl-theme .owl-dots .owl-dot span {
+  background: #bbf5df;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease;
+}
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+  background: #24b67e;
+  width: 28px;
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+footer {
+  background: #0f1113;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #a0b3c2;
+}
+footer .glow-text {
+  font-size: 15px;
+  text-align: center;
+}
+
+/* =========================================================
+   Navbar
+   ========================================================= */
+.navbar {
+  background: rgba(15, 17, 19, 0.9) !important;
+  backdrop-filter: blur(8px);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar.scrolled {
+  background: rgba(15, 17, 19, 0.95) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.navbar-brand {
+  font-weight: 700;
+  font-size: 20px;
+}
+.nav-link {
+  color: #e6f1ff !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: #00e6ff !important;
+}
+
+/* =========================================================
+   Utilities
+   ========================================================= */
+.text-center {
+  text-align: center !important;
+}
+.mt-4 { margin-top: 1.5rem !important; }
+.mb-4 { margin-bottom: 1.5rem !important; }
+.pt-4 { padding-top: 1.5rem !important; }
+.pb-4 { padding-bottom: 1.5rem !important; }
+
+/* Glow labels for skills */
+.glow-label {
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(0,230,255,0.6);
+}
+
+/* Gradient skill bar */
+.gradient-skill {
+  background: linear-gradient(90deg, #24b67e, #00e6ff, #facc15);
+}
+
+/* Profile image styling */
+.profile-img {
+  max-width: 180px;
+  border-radius: 50%;
+  border: 4px solid #00e6ff;
+  box-shadow: 0 0 20px rgba(0,230,255,0.6);
+}
+
+/* =========================================================
+   Animations
+   ========================================================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-in-up {
+  animation: fadeInUp 1s ease forwards;
+}
+
+.about-typed {
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+.about-typed strong {
+  text-shadow: 0 0 8px rgba(0,230,255,0.7);
+}
